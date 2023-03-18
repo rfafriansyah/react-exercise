@@ -38,7 +38,7 @@ function App() {
           remaining essentially unchanged
         </p>
         <ul>{listItems}</ul>
-        <a onMouseOver={(e) => TambahCart(name, e)} href="#">
+        <a onClick={(e) => TambahCart(name, e)} href="#">
           Add to Chart
         </a>
       </div>
