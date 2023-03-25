@@ -2,14 +2,19 @@ import React from "react";
 import Fade from "react-reveal/Fade";
 
 import Section from "element/Section";
+import Button from "element/Button";
+import Card from "element/Card";
+import Lists from "element/Lists";
 import Header from "parts/Header";
 import Clients from "parts/Clients";
 import Feature from "parts/Feature";
+import Footer from "parts/Footer";
 
 import HeroImage from "assets/images/hero-image.png";
 import FeatureTile01 from "assets/images/feature-tile-icon-01.svg";
 import FeatureTile02 from "assets/images/feature-tile-icon-02.svg";
 import FeatureTile03 from "assets/images/feature-tile-icon-03.svg";
+
 export default function Homepage() {
   const features = [
     {
@@ -34,6 +39,91 @@ export default function Homepage() {
         "A pseudo-Latin text used in web design, layout, and printing in place of thigns to emphasise design.",
     },
   ];
+
+  const listPricing = [
+    {
+      price: 27,
+      currencySymbol: "$",
+      description: "Lorem ipsum is a common text",
+      features: [
+        {
+          isChecked: true,
+          content: "Excepteur sint occaecat velit",
+        },
+        {
+          isChecked: true,
+          content: "Excepteur sint occaecat velit",
+        },
+        {
+          isChecked: true,
+          content: "Excepteur sint occaecat velit",
+        },
+        {
+          isChecked: false,
+          content: "Excepteur sint occaecat velit",
+        },
+        {
+          isChecked: false,
+          content: "Excepteur sint occaecat velit",
+        },
+      ],
+    },
+    {
+      price: 47,
+      currencySymbol: "$",
+      description: "Lorem ipsum is a common text",
+      features: [
+        {
+          isChecked: true,
+          content: "Excepteur sint occaecat velit",
+        },
+        {
+          isChecked: true,
+          content: "Excepteur sint occaecat velit",
+        },
+        {
+          isChecked: true,
+          content: "Excepteur sint occaecat velit",
+        },
+        {
+          isChecked: true,
+          content: "Excepteur sint occaecat velit",
+        },
+        {
+          isChecked: false,
+          content: "Excepteur sint occaecat velit",
+        },
+      ],
+    },
+    {
+      price: 67,
+      currencySymbol: "$",
+      description: "Lorem ipsum is a common text",
+      features: [
+        {
+          isChecked: true,
+          content: "Excepteur sint occaecat velit",
+        },
+        {
+          isChecked: true,
+          content: "Excepteur sint occaecat velit",
+        },
+        {
+          isChecked: true,
+          content: "Excepteur sint occaecat velit",
+        },
+        {
+          isChecked: true,
+          content: "Excepteur sint occaecat velit",
+        },
+        {
+          isChecked: true,
+          content: "Excepteur sint occaecat velit",
+        },
+      ],
+    },
+  ];
+
   return (
     <div className="body-wrap">
       <Header></Header>
@@ -96,10 +186,46 @@ export default function Homepage() {
                   </p>
                 </div>
               </div>
-              <div className="tiles-wrap"></div>
+              <div className="tiles-wrap">
+                {listPricing.map((list, index) => (
+                  <Card key={index} hasShadow>
+                    <div className="pricing-item-content">
+                      <div className="pricing-item-header pb-24 mb-24">
+                        <div className="pricing-item-price mb-4">
+                          <span className="pricing-item-price-currency h2">
+                            {list.currencySymbol}
+                          </span>
+                          <span className="pricing-item-price-amount h1 pricing-switchable">
+                            {list.price}
+                          </span>
+                        </div>
+                        <div className="text-xs text-color-low">
+                          {list.description}
+                        </div>
+                      </div>
+                      <div className="pricing-item-features mb-40">
+                        <div className="pricing-item-features-title h6 text-xs text-color-high mb-24">
+                          What's Included
+                        </div>
+                        <Lists
+                          data={list.features}
+                          isSmall
+                          className="pricing-item-features-list mb-32"
+                        ></Lists>
+                      </div>
+                    </div>
+                    <div className="pricing-item-cta mb-8">
+                      <Button isPrimary isBlock>
+                        Start Free Trial
+                      </Button>
+                    </div>
+                  </Card>
+                ))}
+              </div>
             </div>
           </div>
         </Section>
+        <Footer></Footer>
       </main>
     </div>
   );
